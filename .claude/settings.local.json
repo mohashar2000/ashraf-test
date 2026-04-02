@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pkill -f \"python.*app.py\")",
+      "Bash(python /Users/mohashar/AI/ShahulHamid/ashraf-test/app.py)",
+      "Bash(curl -s \"http://127.0.0.1:8081/api/add?num1=10&num2=5\")",
+      "Bash(curl -s \"http://127.0.0.1:8081/api/subtract?num1=10&num2=5\")",
+      "Bash(curl -s \"http://127.0.0.1:8081/api/multiply?num1=10&num2=5\")",
+      "Bash(curl -s \"http://127.0.0.1:8081/api/divide?num1=10&num2=5\")",
+      "Bash(git -C /Users/mohashar/AI/ShahulHamid/ashraf-test add app.py)",
+      "Bash(git -C:*)",
+      "Bash(git -C /Users/mohashar/AI/ShahulHamid/ashraf-test push)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8081/)"
+    ]
+  }
+}
