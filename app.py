@@ -8,16 +8,111 @@ HTML_TEMPLATE = """
 <head>
     <title>Calculator</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 400px; margin: 80px auto; }
-        input, select, button { padding: 10px; margin: 5px 0; width: 100%; box-sizing: border-box; }
-        button { background: #4CAF50; color: white; border: none; cursor: pointer; }
-        button:hover { background: #45a049; }
-        .result { margin-top: 15px; font-size: 1.2em; font-weight: bold; }
-        .error { margin-top: 15px; font-size: 1.1em; color: red; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 40px 32px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 28px;
+            background: linear-gradient(90deg, #ff6fd8, #3813c2, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        input, select {
+            padding: 14px 16px;
+            margin: 8px 0;
+            width: 100%;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input::placeholder { color: rgba(255, 255, 255, 0.4); }
+
+        input:focus, select:focus {
+            border-color: #ff6fd8;
+            box-shadow: 0 0 0 3px rgba(255, 111, 216, 0.25);
+        }
+
+        select option { background: #302b63; color: #fff; }
+
+        button {
+            margin-top: 16px;
+            padding: 14px;
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #ff6fd8, #7b2ff7, #00d4ff);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        button:hover { opacity: 0.88; transform: translateY(-1px); }
+        button:active { transform: translateY(0); }
+
+        .result {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(123, 47, 247, 0.15));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #00d4ff;
+            text-align: center;
+        }
+
+        .error {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 12px;
+            background: rgba(255, 0, 110, 0.12);
+            border: 1px solid rgba(255, 0, 110, 0.4);
+            font-size: 1.1em;
+            color: #ff006e;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <h2>Calculator</h2>
+<div class="card">
+    <h2>Calculator ✨</h2>
     <form method="POST" action="/calculate">
         <input type="number" name="num1" placeholder="Enter first number" step="any" required>
         <select name="operation">
@@ -34,6 +129,7 @@ HTML_TEMPLATE = """
     {% elif result is not none %}
     <div class="result">Result: {{ result }}</div>
     {% endif %}
+</div>
 </body>
 </html>
 """
